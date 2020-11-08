@@ -1,0 +1,26 @@
+server:
+  port: 9002
+
+spring:
+  application:
+    name: movie
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8888/eureka #注册地址
+    register-with-eureka: true #客户端注册到eureka
+    registry-fetch-interval-seconds: 5
+    fetch-registry: true #从eureka获取注册信息
+  instance:
+    prefer-ip-address: true #优先使用服务的ip地址注册到eureka，在生产环境建议改为true
+
+
+feign:  # 开启feign，hystrix
+  hystrix:
+    enabled: true
+
+# ribbon负载均衡随机算法
+#user:
+#  ribbon:
+#    NFloadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
